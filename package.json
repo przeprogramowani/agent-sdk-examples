@@ -1,0 +1,25 @@
+{
+  "name": "agent-demo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "anthropic:review": "tsx anthropic/review.ts",
+    "anthropic:tools": "tsx anthropic/review-with-tools.ts",
+    "anthropic:session": "tsx anthropic/review-with-session.ts",
+    "anthropic:skill": "tsx anthropic/skill-autoload.ts",
+    "anthropic:cost": "tsx anthropic/cost-report.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "type": "module",
+  "dependencies": {
+    "@anthropic-ai/claude-agent-sdk": "^0.3.169"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.2",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3"
+  }
+}

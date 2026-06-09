@@ -1,0 +1,16 @@
+# Dependencies
+node_modules/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment
+.env
+.env.*
+
+# Generated artifacts
+anthropic/cost.json
+
+# OS / editor
+.DS_Store
