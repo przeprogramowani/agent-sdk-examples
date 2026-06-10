@@ -1,14 +1,10 @@
 import { z } from "zod";
 
-// Prompt opisuje wyłącznie zadanie i rolę. Kształtu wyjścia tu nie wymuszamy —
-// robi to schemat (REVIEW_SCHEMA) wraz z opisami pól (.describe()).
 export const REVIEWER_PROMPT = `Jesteś rygorystycznym recenzentem kodu.
 Oceń podany diff w pięciu kryteriach w skali 1-5 (1 = poważne braki, 5 = wzorowo):
 poprawność, bezpieczeństwo, wydajność, czytelność, pokrycie testami.
 Dodaj krótki komentarz (2-3 zdania) wskazujący najważniejsze obserwacje.`;
 
-// Opisy pól (.describe()) to główna dźwignia sterowania modelem przy structured
-// output — działają jak instrukcja skuteczniej niż dopisek w prompcie.
 export const REVIEW_SCHEMA = z.object({
   correctness: z.number().int().min(1).max(5).describe("Poprawność: czy kod robi to, co deklaruje (1-5)"),
   security: z.number().int().min(1).max(5).describe("Bezpieczeństwo: podatności, walidacja wejścia, sekrety (1-5)"),
