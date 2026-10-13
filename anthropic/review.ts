@@ -14,6 +14,9 @@ async function review(diff: string): Promise<ReviewResult> {
       systemPrompt: `${REVIEWER_PROMPT}`,
       model: "claude-sonnet-5-5",
       tools: [],
+      // Recenzent ma być odcięty od CLAUDE.md i ustawień z cwd — bez tego
+      // query() wczytuje je domyślnie, niezależnie od systemPrompt.
+      settingSources: [],
       maxTurns: 2,
       outputFormat: { type: "json_schema", schema: REVIEW_JSON_SCHEMA },
     },

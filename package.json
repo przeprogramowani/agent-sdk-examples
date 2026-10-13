@@ -10,9 +10,7 @@
     "aisdk:review": "tsx ai-sdk/review.ts",
     "aisdk:session": "tsx ai-sdk/review-with-session.ts",
     "aisdk:rules": "tsx ai-sdk/rules-inject.ts",
-    "aisdk:cost": "tsx ai-sdk/cost-report.ts",
-    "evals": "npx -y promptfoo eval -c evals/promptfooconfig.yaml",
-    "evals:view": "npx -y promptfoo view"
+    "aisdk:cost": "tsx ai-sdk/cost-report.ts"
   },
   "keywords": [],
   "author": "",
