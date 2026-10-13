@@ -106,7 +106,9 @@ git diff | npm run aisdk:review   # review your working tree
 Evals live in the [`packages/code-reviewer`](./packages/code-reviewer) package,
 which wires its AI SDK review agent into [**promptfoo**](https://promptfoo.dev)
 to compare OpenRouter models on a flawed React migration diff. It is a separate
-package with its own dependencies and needs `OPENROUTER_API_KEY`:
+package with its own dependencies and needs `OPENROUTER_API_KEY` (export it or
+put it in `packages/code-reviewer/.env`). promptfoo requires **Node ≥ 22.22**
+(the version pinned in `.nvmrc`):
 
 ```bash
 cd packages/code-reviewer
