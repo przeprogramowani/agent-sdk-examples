@@ -68,7 +68,7 @@ export function createReviewRunnerAgent(opts: RunReviewOptions = {}) {
   // Per-agent step counter so each run's trace is independently numbered, plus a
   // running token tally so the trace shows cumulative cost as the loop proceeds.
   let stepNumber = 0;
-  const totalUsage = { input: 0, output: 0, total: 0 };
+  const cumulativeUsage = { input: 0, output: 0, total: 0 };
   return new ToolLoopAgent({
     // Usage accounting on, so per-step + cumulative token/dollar cost is traceable.
     model: provider(modelId, OPENROUTER_USAGE_ACCOUNTING),
@@ -81,7 +81,7 @@ export function createReviewRunnerAgent(opts: RunReviewOptions = {}) {
     // Fires after each model turn + its tool executions complete; the single
     // hook that lets us trace the whole loop (calls, results, usage) from here
     // without threading logging through every tool.
-    onStepFinish: (step) => {
+    onStepEnd: (step) => {
       const n = ++stepNumber;
       const callCount = step.toolCalls.length;
       trace(
@@ -99,13 +99,13 @@ export function createReviewRunnerAgent(opts: RunReviewOptions = {}) {
         trace(`step ${n} · model said: ${summarize(reasoning)}`);
       }
       const { inputTokens, outputTokens, totalTokens } = step.usage;
-      totalUsage.input += inputTokens ?? 0;
-      totalUsage.output += outputTokens ?? 0;
-      totalUsage.total += totalTokens ?? 0;
+      cumulativeUsage.input += inputTokens ?? 0;
+      cumulativeUsage.output += outputTokens ?? 0;
+      cumulativeUsage.total += totalTokens ?? 0;
       trace(
         `step ${n} done · finishReason=${step.finishReason} · ` +
           `tokens in=${inputTokens ?? "?"} out=${outputTokens ?? "?"} total=${totalTokens ?? "?"} · ` +
-          `cumulative total=${totalUsage.total}`
+          `cumulative total=${cumulativeUsage.total}`
       );
     },
   });

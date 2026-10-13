@@ -1,4 +1,4 @@
-import { ToolLoopAgent, Output, stepCountIs } from "ai";
+import { ToolLoopAgent, Output, isStepCount } from "ai";
 import { openrouter } from "@openrouter/ai-sdk-provider";
 import {
   REVIEWER_PROMPT,
@@ -12,7 +12,7 @@ async function review(diff: string): Promise<ReviewResult> {
     instructions: REVIEWER_PROMPT,
     tools: {},
     output: Output.object({ schema: ReviewResult }),
-    stopWhen: stepCountIs(2),
+    stopWhen: isStepCount(2),
   });
 
   const { output } = await reviewer.generate({

@@ -11,7 +11,7 @@ import type { ImplReviewCriteria } from "./read-impl-review-criteria.js";
 function runReadCriteria(): Promise<ImplReviewCriteria> {
   const execute = readImplReviewCriteriaTool.execute;
   if (!execute) throw new Error("readImplReviewCriteriaTool.execute is undefined");
-  return execute({}, { toolCallId: "test", messages: [] }) as Promise<ImplReviewCriteria>;
+  return execute({}, { toolCallId: "test", messages: [], context: {} }) as Promise<ImplReviewCriteria>;
 }
 
 describe("readImplReviewCriteriaTool", () => {

@@ -20,9 +20,9 @@
   "description": "",
   "type": "module",
   "dependencies": {
-    "@anthropic-ai/claude-agent-sdk": "^0.3.169",
-    "@openrouter/ai-sdk-provider": "^2.9.0",
-    "ai": "^6.0.199",
+    "@anthropic-ai/claude-agent-sdk": "^0.3.296",
+    "@openrouter/ai-sdk-provider": "^3.1.0",
+    "ai": "^7.0.138",
     "dotenv": "^17.4.2",
     "zod": "^4.4.3"
   },
