@@ -6,7 +6,7 @@ import { readDiff } from "./utils";
 
 const baseOptions = {
   systemPrompt: REVIEWER_PROMPT,
-  model: "claude-sonnet-4-6",
+  model: "claude-sonnet-5-5",
   maxTurns: 2,
 } as const;
 

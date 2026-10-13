@@ -5,14 +5,14 @@ import { REVIEWER_PROMPT, ReviewResult } from "../common/review-schema";
 import { readDiff } from "./utils";
 
 const structuredReviewer = new ToolLoopAgent({
-  model: openrouter("z-ai/glm-5.1"),
+  model: openrouter("z-ai/glm-5.3"),
   instructions: REVIEWER_PROMPT,
   output: Output.object({ schema: ReviewResult }),
   stopWhen: isStepCount(2),
 });
 
 const recaller = new ToolLoopAgent({
-  model: openrouter("z-ai/glm-5.1"),
+  model: openrouter("z-ai/glm-5.3"),
   instructions:
     "Jesteś tym samym recenzentem. Odpowiadaj zwięźle, zwykłym tekstem, korzystając z historii rozmowy.",
   stopWhen: isStepCount(1),

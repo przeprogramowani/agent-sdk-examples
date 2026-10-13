@@ -5,7 +5,7 @@ import { writeFileSync } from "node:fs";
 import { join } from "node:path";
 
 const agent = new ToolLoopAgent({
-  model: openrouter("z-ai/glm-5.1", { usage: { include: true } }),
+  model: openrouter("z-ai/glm-5.3", { usage: { include: true } }),
   instructions: "Jesteś zwięzły. Odpowiadaj jednym zdaniem.",
   stopWhen: isStepCount(1),
 });
@@ -36,7 +36,7 @@ const report = {
     outputTokens: usage.outputTokens,
     totalTokens: usage.totalTokens,
   },
-  model: "z-ai/glm-5.1",
+  model: "z-ai/glm-5.3",
 };
 
 const outPath = join(import.meta.dirname, "cost.json");

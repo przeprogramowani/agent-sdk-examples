@@ -48,7 +48,7 @@ import { reviewCode } from "./src/index.ts";
 
 const result = await reviewCode(
   { title: "Fix off-by-one in pager", description: "…", diff },
-  { model: "anthropic/claude-sonnet-4.5" }
+  { model: "anthropic/claude-sonnet-5.5" }
 );
 console.log(result.verdict, result.criteria.securitySafety.score);
 ```

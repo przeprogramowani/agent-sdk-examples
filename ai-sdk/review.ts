@@ -8,7 +8,7 @@ import { readDiff } from "./utils";
 
 async function review(diff: string): Promise<ReviewResult> {
   const reviewer = new ToolLoopAgent({
-    model: openrouter("z-ai/glm-5.1"),
+    model: openrouter("z-ai/glm-5.3"),
     instructions: REVIEWER_PROMPT,
     tools: {},
     output: Output.object({ schema: ReviewResult }),

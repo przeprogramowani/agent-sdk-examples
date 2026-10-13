@@ -16,7 +16,7 @@ const skillPath = join(
 const skill = readFileSync(skillPath, "utf8");
 
 const agent = new ToolLoopAgent({
-  model: openrouter("z-ai/glm-5.1"),
+  model: openrouter("z-ai/glm-5.3"),
   instructions: `Stosuj poniższy skill dokładnie tak, jak go opisano:\n\n${skill}`,
   stopWhen: isStepCount(1),
 });

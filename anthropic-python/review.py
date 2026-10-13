@@ -75,7 +75,7 @@ def build_options() -> ClaudeAgentOptions:
     # anthropic-python/.env (OPENROUTER_API_KEY=) albo `env -u OPENROUTER_API_KEY ...`.
     openrouter_key = _openrouter_key()
     if openrouter_key:
-        model = os.environ.get("OPENROUTER_MODEL", "anthropic/claude-sonnet-4.5")
+        model = os.environ.get("OPENROUTER_MODEL", "anthropic/claude-sonnet-5.5")
         return ClaudeAgentOptions(
             model=model,
             env={
@@ -88,7 +88,7 @@ def build_options() -> ClaudeAgentOptions:
             **common,
         )
 
-    model = os.environ.get("ANTHROPIC_MODEL", "claude-sonnet-4-6")
+    model = os.environ.get("ANTHROPIC_MODEL", "claude-sonnet-5-5")
     return ClaudeAgentOptions(model=model, **common)
 
 

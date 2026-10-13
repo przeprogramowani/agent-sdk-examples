@@ -12,7 +12,7 @@ async function review(diff: string): Promise<ReviewResult> {
     prompt: `Zrecenzuj ten diff:\n\n${diff}`,
     options: {
       systemPrompt: `${REVIEWER_PROMPT}`,
-      model: "claude-sonnet-4-6",
+      model: "claude-sonnet-5-5",
       tools: [],
       maxTurns: 2,
       outputFormat: { type: "json_schema", schema: REVIEW_JSON_SCHEMA },
