@@ -49,11 +49,14 @@ export function extractUsage(steps: readonly unknown[]): ReviewUsage {
   for (const step of steps) {
     const s = step as { usage?: Record<string, unknown>; providerMetadata?: Record<string, unknown> };
     const u = s.usage ?? {};
+    // AI SDK 7 nests cache/reasoning counts under `inputTokenDetails` / `outputTokenDetails`.
+    const inputDetails = (u.inputTokenDetails ?? {}) as Record<string, unknown>;
+    const outputDetails = (u.outputTokenDetails ?? {}) as Record<string, unknown>;
     acc.promptTokens += num(u.inputTokens);
     acc.completionTokens += num(u.outputTokens);
     acc.totalTokens += num(u.totalTokens);
-    acc.cachedTokens += num(u.cachedInputTokens);
-    acc.reasoningTokens += num(u.reasoningTokens);
+    acc.cachedTokens += num(inputDetails.cacheReadTokens);
+    acc.reasoningTokens += num(outputDetails.reasoningTokens);
 
     const openrouter = s.providerMetadata?.openrouter as { usage?: Record<string, unknown> } | undefined;
     const orCost = openrouter?.usage?.cost;

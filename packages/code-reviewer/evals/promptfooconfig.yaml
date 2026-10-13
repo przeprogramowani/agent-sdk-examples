@@ -6,20 +6,20 @@ prompts:
 
 providers:
   - id: file://./reviewProvider.ts
-    label: "glm-5.1"
+    label: "glm-5.3"
     config:
-      model: z-ai/glm-5.1
+      model: z-ai/glm-5.3
   - id: file://./reviewProvider.ts
-    label: "deepseek-v4-flash"
+    label: "deepseek-v4.1-flash"
     config:
-      model: deepseek/deepseek-v4-flash
+      model: deepseek/deepseek-v4.1-flash
   - id: file://./reviewProvider.ts
-    label: "sonnet-4.6"
+    label: "gpt-6-luna"
     config:
-      model: anthropic/claude-sonnet-4.6
+      model: openai/gpt-6-luna
 defaultTest:
   options:
-    provider: openrouter:anthropic/claude-sonnet-4.5
+    provider: openrouter:anthropic/claude-sonnet-5.5
 
 tests:
   - description: "React 16→19 UserCard migration with three planted flaws (XSS, stale-closure effect, defaultProps)"

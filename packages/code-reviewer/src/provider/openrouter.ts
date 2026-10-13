@@ -15,7 +15,7 @@ try {
 }
 
 /** Default OpenRouter model id when none is supplied via options or env. */
-export const DEFAULT_MODEL = "anthropic/claude-sonnet-4.5";
+export const DEFAULT_MODEL = "anthropic/claude-sonnet-5.5";
 
 /**
  * Per-model settings that turn on OpenRouter usage accounting, so each response

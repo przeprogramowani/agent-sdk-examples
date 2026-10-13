@@ -1,21 +1,21 @@
 import "dotenv/config";
-import { ToolLoopAgent, Output, stepCountIs, type ModelMessage } from "ai";
+import { ToolLoopAgent, Output, isStepCount, type ModelMessage } from "ai";
 import { openrouter } from "@openrouter/ai-sdk-provider";
 import { REVIEWER_PROMPT, ReviewResult } from "../common/review-schema";
 import { readDiff } from "./utils";
 
 const structuredReviewer = new ToolLoopAgent({
-  model: openrouter("z-ai/glm-5.1"),
+  model: openrouter("z-ai/glm-5.3"),
   instructions: REVIEWER_PROMPT,
   output: Output.object({ schema: ReviewResult }),
-  stopWhen: stepCountIs(2),
+  stopWhen: isStepCount(2),
 });
 
 const recaller = new ToolLoopAgent({
-  model: openrouter("z-ai/glm-5.1"),
+  model: openrouter("z-ai/glm-5.3"),
   instructions:
     "Jesteś tym samym recenzentem. Odpowiadaj zwięźle, zwykłym tekstem, korzystając z historii rozmowy.",
-  stopWhen: stepCountIs(1),
+  stopWhen: isStepCount(1),
 });
 
 const diff = await readDiff();
@@ -24,7 +24,7 @@ const messages: ModelMessage[] = [
 ];
 
 const first = await structuredReviewer.generate({ messages });
-messages.push(...first.response.messages);
+messages.push(...first.responseMessages);
 console.error("[1] recenzja:");
 console.log(JSON.stringify(first.output, null, 2));
 

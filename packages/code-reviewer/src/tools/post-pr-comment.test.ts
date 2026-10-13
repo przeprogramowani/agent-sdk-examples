@@ -58,7 +58,7 @@ const planReview: PlanReviewResult = {
 function run(payload: unknown): Promise<PostResult> {
   const execute = postPrCommentTool.execute;
   if (!execute) throw new Error("postPrCommentTool.execute is undefined");
-  return execute(payload as never, { toolCallId: "t", messages: [] }) as Promise<PostResult>;
+  return execute(payload as never, { toolCallId: "t", messages: [], context: {} }) as Promise<PostResult>;
 }
 
 describe("postPrCommentTool", () => {

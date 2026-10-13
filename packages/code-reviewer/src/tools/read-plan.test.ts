@@ -12,7 +12,7 @@ import type { ReadPlanResult } from "./read-plan.js";
 function runReadPlan(target: string): Promise<ReadPlanResult> {
   const execute = readPlanTool.execute;
   if (!execute) throw new Error("readPlanTool.execute is undefined");
-  return execute({ target }, { toolCallId: "test", messages: [] }) as Promise<ReadPlanResult>;
+  return execute({ target }, { toolCallId: "test", messages: [], context: {} }) as Promise<ReadPlanResult>;
 }
 
 describe("readPlanTool", () => {

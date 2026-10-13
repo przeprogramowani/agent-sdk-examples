@@ -11,7 +11,13 @@ describe("extractUsage", () => {
   it("sums tokens and cost across multiple steps", () => {
     const steps = [
       {
-        usage: { inputTokens: 100, outputTokens: 20, totalTokens: 120, cachedInputTokens: 10, reasoningTokens: 5 },
+        usage: {
+          inputTokens: 100,
+          outputTokens: 20,
+          totalTokens: 120,
+          inputTokenDetails: { cacheReadTokens: 10 },
+          outputTokenDetails: { reasoningTokens: 5 },
+        },
         providerMetadata: { openrouter: { usage: { cost: 0.001 } } },
       },
       {

@@ -1,5 +1,5 @@
 import "dotenv/config";
-import { ToolLoopAgent, stepCountIs } from "ai";
+import { ToolLoopAgent, isStepCount } from "ai";
 import { openrouter } from "@openrouter/ai-sdk-provider";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
@@ -16,9 +16,9 @@ const skillPath = join(
 const skill = readFileSync(skillPath, "utf8");
 
 const agent = new ToolLoopAgent({
-  model: openrouter("z-ai/glm-5.1"),
+  model: openrouter("z-ai/glm-5.3"),
   instructions: `Stosuj poniższy skill dokładnie tak, jak go opisano:\n\n${skill}`,
-  stopWhen: stepCountIs(1),
+  stopWhen: isStepCount(1),
 });
 
 const { text } = await agent.generate({ prompt: "Przywitaj się ze mną." });

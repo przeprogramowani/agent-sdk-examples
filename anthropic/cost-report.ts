@@ -7,7 +7,7 @@ const result = query({
   prompt: "Napisz jednozdaniowe powitanie dla zespołu programistów.",
   options: {
     systemPrompt: "Jesteś zwięzły. Odpowiadaj jednym zdaniem.",
-    model: "claude-sonnet-4-6",
+    model: "claude-sonnet-5-5",
     tools: [],
     maxTurns: 1,
   },

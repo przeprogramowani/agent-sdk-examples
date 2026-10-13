@@ -71,9 +71,9 @@ The ground truth lives in [`fixtures/react-migration.flaws.md`](./fixtures/react
 Listed as three `providers:` entries in `promptfooconfig.yaml`, all pointing at
 the same `reviewProvider.ts` with a different `config.model`:
 
-- `z-ai/glm-5.1`
-- `deepseek/deepseek-v4-flash`
-- `anthropic/claude-sonnet-4.5`
+- `z-ai/glm-5.3`
+- `deepseek/deepseek-v4.1-flash`
+- `openai/gpt-6-luna`
 
 ## The assertions
 
@@ -85,7 +85,7 @@ Each model's `ReviewResult` is checked by:
   integer contract the JSON schema deliberately can't (Anthropic structured
   output rejects `minimum`/`maximum`/`.int()` on integers).
 - **Three `llm-rubric` judges** — one per planted flaw, graded by
-  `openrouter:anthropic/claude-sonnet-4.5` (set via `defaultTest.options.provider`
+  `openrouter:anthropic/claude-sonnet-5.5` (set via `defaultTest.options.provider`
   because the default grader is OpenAI and no OpenAI key is available). Each
   rubric is phrased to pass **only** on genuine identification of that specific
   flaw, not generic boilerplate.
