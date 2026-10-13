@@ -24,7 +24,7 @@ const messages: ModelMessage[] = [
 ];
 
 const first = await structuredReviewer.generate({ messages });
-messages.push(...first.response.messages);
+messages.push(...first.responseMessages);
 console.error("[1] recenzja:");
 console.log(JSON.stringify(first.output, null, 2));
 
